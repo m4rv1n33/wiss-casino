@@ -1,0 +1,9 @@
+.centered-container {
+    display: flex;
+    margin: auto;
+
+    flex-direction: row;
+
+    align-content: center;
+    align-items: center;
+}
