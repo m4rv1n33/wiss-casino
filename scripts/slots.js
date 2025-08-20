@@ -24,6 +24,9 @@ const pattern_values = {
 var credits = 100;
 var board = [];
 var board_cells = [];
+var patterns = [];
+
+var ongoing_spin_animations = 0;
 
 function pick_random_array_element(arr) {
     return arr[ Math.floor(Math.random() * arr.length) ]
@@ -48,24 +51,48 @@ function cell_animation(cell, final_text, duration, time = 0) {
     var next_frame_time = (time / duration) * 0.1 + 0.01;
 
     if (time >= duration) {
+        ongoing_spin_animations--;
         cell.innerText = final_text;
+
+        evaluate_animation();
         return
     } else { cell.innerText = symbols[pick_random_array_element(symbol_identifiers)]; }
     
     setTimeout(cell_animation, next_frame_time * 1000, cell, final_text, duration, time + next_frame_time);
 }
 
+function evaluate_animation() {
+    if (ongoing_spin_animations > 0) return
+
+    patterns.forEach(e => {
+        e.slice(1).forEach(cell => board_cells[cell].style.color = 'yellow');
+        
+        let payout = 0;
+        switch (e[0][0]) {
+            case "square":
+            case "line":
+                payout += pattern_values[e[0][0] + (e.length - 1)] * symbol_values[e[0][1]]
+                break;
+        }
+
+        credits += payout;
+        update_credit_display();
+    });
+}
+
 function render_board(animate) {
-    document.getElementById('credit-display').innerText = credits + " credits";
+    board_cells.forEach(e => e.style.color = 'black');
 
     for (let i = 0; i < board.length; i++) {
-        if (animate) { cell_animation(board_cells[i], symbols[board[i]], Math.max(2, Math.random() * 3)); }
-        else { board_cells[i].innerText = symbols[board[i]]; }
+        if (animate) {
+            ongoing_spin_animations++;
+            cell_animation(board_cells[i], symbols[board[i]], Math.max(2, Math.random() * 3));
+        } else { board_cells[i].innerText = symbols[board[i]]; }
     }
 }
 
 function spin() {
-    if (credits < 10) return
+    if (credits < 10 || ongoing_spin_animations > 0) return
 
     board = []
 
@@ -74,7 +101,52 @@ function spin() {
     }
 
     credits -= 10;
-    render_board(true)
+    update_credit_display();
+    render_board(true);
+
+    evaluate_board();
+}
+
+function evaluate_board() {
+    patterns = [];
+
+    for (let i = 0; i < board.length; i++) {
+        let symbol_type = board[i];
+        
+        for (let dir = 0; dir < 8; dir++) {
+            let line_length = 1;
+            let offset = 0;
+            let offset_increase = 0;
+            let pattern = [ [ "line", symbol_type ], i ];
+
+            switch (dir) {
+                case 0: offset_increase = 1; break;
+                case 1: offset_increase = BOARD_WIDTH + 1; break;
+                case 2: offset_increase = BOARD_WIDTH; break;
+                case 3: offset_increase = BOARD_WIDTH - 1; break;
+                case 4: offset_increase = -1; break;
+                case 5: offset_increase = -BOARD_WIDTH - 1; break;
+                case 6: offset_increase = -BOARD_WIDTH; break;
+                case 7: offset_increase = -BOARD_WIDTH + 1; break;
+            }
+
+            offset += offset_increase;
+            while (offset >= 0 && offset < board.length && board[i + offset] == symbol_type) {
+                line_length++;
+                pattern.push(i + offset);
+                offset += offset_increase;
+            }
+
+            if (pattern.length < 4) continue;
+            patterns.push(pattern);
+        }
+    }
+
+    console.log(patterns);
+}
+
+function update_credit_display() {
+    document.getElementById('credit-display').innerText = credits + " credits";
 }
 
 for (let y = 0; y < BOARD_HEIGHT; y++) {
@@ -89,5 +161,6 @@ for (let y = 0; y < BOARD_HEIGHT; y++) {
     }
 }
 
+update_credit_display();
 render_board(false);
 document.getElementById('spin-button').addEventListener('click', spin);
