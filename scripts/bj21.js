@@ -199,7 +199,7 @@ Date: 20/08/2025
 
       // if dealer has blackjack -> push, else player wins 1.5x
       if (isBlackjack(dealerHand)) {
-        setMessage('Both have Blackjack — push (tie).', true);
+        setMessage('Both have Blackjack. Push (tie).', true);
       } 
       else {
         const payout = Math.floor(hand.bet * 1.5);
@@ -322,7 +322,7 @@ Date: 20/08/2025
     h.cards.push(draw());
     h.finished = true;
     renderAll();
-    setMessage('Doubled down — one card dealt, then standing.');
+    setMessage('Doubled down. One card dealt, then standing.');
     enableActionButtons(false);
     setTimeout(() => nextHandOrDealer(), 1000);
   }
@@ -410,7 +410,7 @@ Date: 20/08/2025
         return;
       }
       if (hv > 21) {
-        result = `Hand ${idx+1}: busted with ${hv} — you lose ${h.bet} CHF.`;
+        result = `Hand ${idx+1}: busted with ${hv}. You lose ${h.bet} CHF.`;
       } 
       else if (isBlackjack(h.cards) && !isBlackjack(dealerHand)) {
         const win = Math.floor(h.bet * 1.5);
@@ -430,14 +430,14 @@ Date: 20/08/2025
       } 
       else if (hv > dealerVal) {
         cash += h.bet * 2;
-        result = `Hand ${idx+1}: You ${hv} vs Dealer ${dealerVal} — you win ${h.bet} CHF.`;
+        result = `Hand ${idx+1}: You ${hv} vs Dealer ${dealerVal}. You win ${h.bet} CHF.`;
       } 
       else if (hv === dealerVal) {
         cash += h.bet;
         result = `Hand ${idx+1}: Push (${hv}). Bet returned.`;
       } 
       else {
-        result = `Hand ${idx+1}: You ${hv} vs Dealer ${dealerVal} — you lose ${h.bet} CHF.`;
+        result = `Hand ${idx+1}: You ${hv} vs Dealer ${dealerVal}. You lose ${h.bet} CHF.`;
       }
       messages.push(result);
     });
