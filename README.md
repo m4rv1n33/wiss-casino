@@ -25,11 +25,11 @@ We were bored in class lmfao
 ---
 
 ## 📷 Screenshots
-![Screenshot1](images/bj21-1.jpg)
-![Screenshot1](images/bj21-2.jpg)
-![Screenshot1](images/bj21-3.jpg)
-![Screenshot1](images/slots-1.jpg)
-![Screenshot1](images/slots-2.jpg)
+![Screenshot1](images/bj21-1.png)
+![Screenshot1](images/bj21-2.png)
+![Screenshot1](images/bj21-3.png)
+![Screenshot1](images/slots-1.png)
+![Screenshot1](images/slots-2.png)
 
 ---
 
