@@ -500,4 +500,14 @@ Date: 20/08/2025
   }
 
   init();
+  //addCash console command
+  window.addCash = function(amount) {
+  if (isNaN(amount) || amount <= 0) {
+    console.warn  ("Usage: addCash(<positive number>)");
+    return;
+  }
+  cash += amount;
+  updateBankrollDisplay();
+  console.log(`💰 Added ${amount} CHF. New balance: ${cash} CHF`);
+};
 })();
