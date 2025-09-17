@@ -30,9 +30,8 @@ header h1 {
     align-items: center;
     flex-wrap: wrap;
 }
-.controls .bank
 
-.controls .bet input[type="number"] {
+.controls .bank .controls .bet input[type="number"] {
     width: 90px;
     padding: 6px;
     margin-left: 8px;
@@ -42,7 +41,7 @@ header h1 {
     padding: 8px 12px;
     border-radius: 6px;
     border: 1px solid #89a;
-    background: linear-gradient(180deg,#fff,#e9f4ff);
+    background: linear-gradient(180deg, #fff, #e9f4ff);
     cursor: pointer;
     font-weight: 600;
 }
@@ -52,7 +51,9 @@ header h1 {
     cursor: not-allowed;
 }
 
-.hidden { display: none; }
+.hidden {
+    display: none;
+}
 
 .table {
     display: grid;
@@ -61,12 +62,13 @@ header h1 {
     align-items: stretch;
 }
 
-.dealer-area, .player-area {
+.dealer-area,
+.player-area {
     background: #f8ffff;
     border: 1px solid #cfe;
     padding: 12px;
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(18,34,60,0.04);
+    box-shadow: 0 6px 18px rgba(18, 34, 60, 0.04);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -85,11 +87,11 @@ header h1 {
     border-radius: 8px;
     border: 1px solid #c0d;
     background: white;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     font-weight: 700;
     text-align: center;
 }
@@ -100,18 +102,27 @@ header h1 {
     height: 86px;
     border-radius: 8px;
     border: 1px solid #c0d;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    padding:6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     font-weight: 700;
     text-align: center;
 }
 
-.card.red { color: #b00; }
-.card .rank { font-size: 18px; }
-.card .suit { font-size: 20px; opacity: 0.9; }
+.card.red {
+    color: #b00;
+}
+
+.card .rank {
+    font-size: 18px;
+}
+
+.card .suit {
+    font-size: 20px;
+    opacity: 0.9;
+}
 
 .hand {
     padding: 8px;
@@ -122,15 +133,18 @@ header h1 {
 }
 
 .hand .hand-header {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
-    margin-bottom:6px;
+    margin-bottom: 6px;
     outline: none;
 }
 
-.hand .hand-info { font-size: 14px; color: #225; }
+.hand .hand-info {
+    font-size: 14px;
+    color: #225;
+}
 
 .messages {
     margin-top: 8px;
@@ -143,15 +157,18 @@ header h1 {
 }
 
 .player-bet {
-    font-weight:700;
-    font-size:14px;
+    font-weight: 700;
+    font-size: 14px;
 }
 
-.small-muted { font-size:12px; color:#557; }
+.small-muted {
+    font-size: 12px;
+    color: #557;
+}
 
 .decision {
-    font-weight:800;
-    color:#083;
+    font-weight: 800;
+    color: #083;
 }
 
 .site-footer {
@@ -164,7 +181,8 @@ header h1 {
     background: #f9fcff;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     display: flex;
@@ -182,4 +200,30 @@ html, body {
     color: #456;
     border-top: 1px solid #ccd;
     background: aliceblue;
+}
+.menu-button {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #cb1111, #f8aaaa);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+}
+
+.menu-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #f8aaaa, #cb1111);
 }

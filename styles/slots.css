@@ -36,3 +36,29 @@ button {
     font-family: sans-serif;
     font-size: 40px;
 }
+.menu-button {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #cb1111, #f8aaaa);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+}
+
+.menu-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #f8aaaa, #cb1111);
+}
