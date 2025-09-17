@@ -1,4 +1,12 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: aliceblue;
+    color: #456;
 
+}
+a {
+    color: #456;
+}
 .centered-container {
     display: flex;
     margin: auto;
